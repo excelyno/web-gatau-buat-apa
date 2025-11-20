@@ -1,0 +1,474 @@
+<!DOCTYPE html>
+<html lang="id" class="scroll-smooth">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Hidrasi & Homeostasis Tubuh 💧</title>
+    
+    <!-- Fonts: Quicksand untuk UI, Roboto Mono untuk data -->
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Quicksand:wght@400;600;700&family=Roboto+Mono:wght@400;500&display=swap" rel="stylesheet">
+    
+    <!-- Tailwind CSS -->
+    <script src="https://cdn.tailwindcss.com"></script>
+    
+    <!-- Lucide Icons -->
+    <script src="https://unpkg.com/lucide@latest"></script>
+
+    <!-- Custom Configuration for Tailwind Colors -->
+    <script>
+        tailwind.config = {
+            theme: {
+                extend: {
+                    fontFamily: {
+                        sans: ['Quicksand', 'sans-serif'],
+                        mono: ['Roboto Mono', 'monospace'],
+                    },
+                    colors: {
+                        water: {
+                            100: '#E0F7FA',
+                            300: '#4DD0E1',
+                            500: '#00BCD4',
+                            700: '#0097A7',
+                            900: '#006064',
+                        },
+                        science: {
+                            blue: '#2962FF',
+                            purple: '#6200EA',
+                            teal: '#00BFA5'
+                        }
+                    },
+                    animation: {
+                        'bounce-slow': 'bounce 3s infinite',
+                        'float': 'float 6s ease-in-out infinite',
+                        'blob': 'blob 7s infinite',
+                    },
+                    keyframes: {
+                        float: {
+                            '0%, 100%': { transform: 'translateY(0)' },
+                            '50%': { transform: 'translateY(-20px)' },
+                        },
+                        blob: {
+                            '0%': { transform: 'translate(0px, 0px) scale(1)' },
+                            '33%': { transform: 'translate(30px, -50px) scale(1.1)' },
+                            '66%': { transform: 'translate(-20px, 20px) scale(0.9)' },
+                            '100%': { transform: 'translate(0px, 0px) scale(1)' },
+                        }
+                    }
+                }
+            }
+        }
+    </script>
+
+    <style>
+        body {
+            background-color: #F0F4F8;
+            overflow-x: hidden;
+        }
+        .glass-card {
+            background: rgba(255, 255, 255, 0.8);
+            backdrop-filter: blur(12px);
+            border: 1px solid rgba(255, 255, 255, 0.6);
+        }
+        .bg-grid-pattern {
+            background-image: linear-gradient(to right, #e2e8f0 1px, transparent 1px),
+                              linear-gradient(to bottom, #e2e8f0 1px, transparent 1px);
+            background-size: 40px 40px;
+        }
+        .scientific-border {
+            position: relative;
+        }
+        .scientific-border::after {
+            content: '';
+            position: absolute;
+            bottom: 0;
+            left: 0;
+            width: 40%;
+            height: 4px;
+            background-color: currentColor;
+        }
+    </style>
+</head>
+<body class="text-slate-700 bg-grid-pattern">
+
+    <!-- NAVIGATION -->
+    <nav class="fixed w-full z-50 top-0 transition-all duration-300 p-4" id="navbar">
+        <div class="max-w-6xl mx-auto flex justify-between items-center glass-card px-6 py-3 rounded-full shadow-sm">
+            <div class="flex items-center gap-2 font-bold text-xl text-water-900 cursor-pointer" onclick="window.scrollTo({top:0, behavior:'smooth'})">
+                <i data-lucide="microscope" class="text-water-700"></i>
+                <span>BioHydra<span class="text-water-500">Lab</span></span>
+            </div>
+            <a href="#physiology" class="hidden md:block bg-water-700 hover:bg-water-900 text-white px-5 py-2 rounded-full font-semibold text-sm transition shadow-md">
+                Analisis Fisiologis
+            </a>
+        </div>
+    </nav>
+
+    <!-- HERO SECTION -->
+    <header class="relative min-h-screen flex items-center justify-center overflow-hidden pt-20">
+        <!-- Abstract Shapes -->
+        <div class="absolute top-20 right-10 w-64 h-64 bg-blue-200 rounded-full mix-blend-multiply filter blur-3xl opacity-50 animate-blob"></div>
+        <div class="absolute bottom-20 left-10 w-64 h-64 bg-teal-200 rounded-full mix-blend-multiply filter blur-3xl opacity-50 animate-blob animation-delay-2000"></div>
+
+        <div class="container mx-auto px-6 text-center relative z-10">
+            <div class="inline-flex items-center gap-2 px-4 py-2 bg-white rounded-full shadow-sm border border-slate-200 mb-6 animate-bounce-slow">
+                <span class="w-2 h-2 bg-green-500 rounded-full animate-pulse"></span>
+                <span class="text-xs font-mono text-slate-500 tracking-wider">STATUS: MONITORING HOMEOSTASIS</span>
+            </div>
+            
+            <h1 class="text-4xl md:text-6xl font-bold text-slate-800 mb-6 leading-tight">
+                Optimasi Biologis Melalui<br>
+                <span class="text-water-700 bg-clip-text text-transparent bg-gradient-to-r from-water-500 to-blue-600">Hidrasi Seluler</span>
+            </h1>
+            
+            <p class="text-lg md:text-xl text-slate-600 mb-10 max-w-3xl mx-auto leading-relaxed">
+                Air bukan sekadar pelepas dahaga, melainkan <span class="font-semibold text-water-700">medium transportasi vital</span> untuk nutrisi, termoregulasi, dan ekskresi metabolik tubuh manusia.
+            </p>
+            
+            <div class="flex flex-col md:flex-row justify-center gap-4">
+                <button onclick="document.getElementById('physiology').scrollIntoView()" class="bg-slate-800 text-white px-8 py-4 rounded-xl text-lg font-semibold shadow-lg hover:bg-slate-700 transition flex items-center justify-center gap-2 group">
+                    <i data-lucide="activity" class="group-hover:scale-110 transition"></i> Tinjau Fisiologis
+                </button>
+                <div id="counter-btn" class="cursor-pointer bg-white text-slate-700 border border-slate-300 px-8 py-4 rounded-xl text-lg font-semibold shadow-sm hover:bg-slate-50 transition flex items-center justify-center gap-2 select-none">
+                    🧪 Log Asupan: <span id="sip-count" class="font-mono text-water-700">0</span> <span class="text-xs text-slate-400">x 250ml</span>
+                </div>
+            </div>
+            <p class="mt-4 text-xs font-mono text-slate-400" id="congrats-msg" style="opacity:0;">DATA TERCATAT: HIDRASI MENINGKAT.</p>
+        </div>
+    </header>
+
+    <!-- SECTION 1: Physiological Benefits (The Good) -->
+    <section id="physiology" class="py-20 bg-white border-y border-slate-200">
+        <div class="container mx-auto px-6">
+            <div class="text-center mb-16">
+                <span class="text-water-700 font-mono text-xs uppercase tracking-[0.2em]">Mekanisme Positif</span>
+                <h2 class="text-3xl md:text-4xl font-bold text-slate-800 mt-2">Fungsi Fisiologis Optimal</h2>
+                <p class="text-slate-500 mt-4 max-w-2xl mx-auto">Bagaimana H₂O memengaruhi kinerja sistem organ secara molekuler.</p>
+            </div>
+
+            <div class="grid grid-cols-1 md:grid-cols-3 gap-8">
+                <!-- Card 1 -->
+                <div class="p-8 bg-slate-50 rounded-xl border border-slate-100 hover:border-blue-200 transition group relative overflow-hidden">
+                    <div class="absolute top-0 right-0 p-4 opacity-10 group-hover:opacity-20 transition">
+                        <i data-lucide="brain-circuit" class="w-24 h-24 text-blue-600"></i>
+                    </div>
+                    <div class="text-blue-600 mb-4"><i data-lucide="brain-circuit" class="w-8 h-8"></i></div>
+                    <h3 class="text-xl font-bold text-slate-800 mb-3 scientific-border text-blue-600">Fungsi Kognitif & Neurotransmisi</h3>
+                    <p class="text-sm text-slate-600 leading-relaxed">
+                        Hidrasi adekuat menjaga tekanan intrakranial dan integritas sel glia. Hal ini mengoptimalkan transmisi sinapsis, meningkatkan atensi selektif, dan memori kerja jangka pendek.
+                    </p>
+                </div>
+
+                <!-- Card 2 -->
+                <div class="p-8 bg-slate-50 rounded-xl border border-slate-100 hover:border-yellow-200 transition group relative overflow-hidden">
+                    <div class="absolute top-0 right-0 p-4 opacity-10 group-hover:opacity-20 transition">
+                        <i data-lucide="zap" class="w-24 h-24 text-yellow-600"></i>
+                    </div>
+                    <div class="text-yellow-600 mb-4"><i data-lucide="zap" class="w-8 h-8"></i></div>
+                    <h3 class="text-xl font-bold text-slate-800 mb-3 scientific-border text-yellow-600">Transportasi Oksigen Seluler</h3>
+                    <p class="text-sm text-slate-600 leading-relaxed">
+                        Air adalah komponen utama plasma darah (sekitar 90%). Volume darah yang optimal (normovolemia) memastikan perfusi jaringan yang efisien dan pengiriman O₂ ke mitokondria untuk produksi ATP.
+                    </p>
+                </div>
+
+                <!-- Card 3 -->
+                <div class="p-8 bg-slate-50 rounded-xl border border-slate-100 hover:border-teal-200 transition group relative overflow-hidden">
+                    <div class="absolute top-0 right-0 p-4 opacity-10 group-hover:opacity-20 transition">
+                        <i data-lucide="layers" class="w-24 h-24 text-teal-600"></i>
+                    </div>
+                    <div class="text-teal-600 mb-4"><i data-lucide="layers" class="w-8 h-8"></i></div>
+                    <h3 class="text-xl font-bold text-slate-800 mb-3 scientific-border text-teal-600">Integritas & Turgor Kulit</h3>
+                    <p class="text-sm text-slate-600 leading-relaxed">
+                        Meningkatkan hidrasi stratum corneum. Air memfasilitasi ekskresi sisa metabolisme melalui kelenjar sudorifera (keringat), menjaga elastisitas kulit dan fungsi *barrier* pertahanan.
+                    </p>
+                </div>
+
+                <!-- Card 4 -->
+                <div class="p-8 bg-slate-50 rounded-xl border border-slate-100 hover:border-purple-200 transition group relative overflow-hidden md:col-start-1 md:col-end-2 lg:col-auto">
+                    <div class="absolute top-0 right-0 p-4 opacity-10 group-hover:opacity-20 transition">
+                        <i data-lucide="smile" class="w-24 h-24 text-purple-600"></i>
+                    </div>
+                    <div class="text-purple-600 mb-4"><i data-lucide="smile" class="w-8 h-8"></i></div>
+                    <h3 class="text-xl font-bold text-slate-800 mb-3 scientific-border text-purple-600">Regulasi Mood & Elektrolit</h3>
+                    <p class="text-sm text-slate-600 leading-relaxed">
+                        Mencegah ketidakseimbangan elektrolit yang dapat memicu gangguan psikosomatis ringan. Hidrasi berpengaruh pada sintesis neurotransmitter dopamin dan serotonin.
+                    </p>
+                </div>
+
+                 <!-- Card 5 -->
+                 <div class="p-8 bg-slate-50 rounded-xl border border-slate-100 hover:border-orange-200 transition group relative overflow-hidden md:col-start-2 md:col-end-4 lg:col-auto">
+                    <div class="absolute top-0 right-0 p-4 opacity-10 group-hover:opacity-20 transition">
+                        <i data-lucide="activity" class="w-24 h-24 text-orange-600"></i>
+                    </div>
+                    <div class="text-orange-600 mb-4"><i data-lucide="activity" class="w-8 h-8"></i></div>
+                    <h3 class="text-xl font-bold text-slate-800 mb-3 scientific-border text-orange-600">Efisiensi Gastrointestinal</h3>
+                    <p class="text-sm text-slate-600 leading-relaxed">
+                        Penting untuk proses hidrolisis dalam pencernaan dan motilitas usus (gerak peristaltik). Mencegah reabsorpsi air berlebih di kolon yang merupakan patofisiologi utama konstipasi.
+                    </p>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- SECTION: EVIDENCE BASED DATA (SCIENTIFIC FACTS) -->
+    <section id="facts" class="py-20 bg-slate-900 text-white relative overflow-hidden">
+        <!-- Background Elements -->
+        <div class="absolute inset-0 opacity-10" style="background-image: url('data:image/svg+xml,%3Csvg width=\'60\' height=\'60\' viewBox=\'0 0 60 60\' xmlns=\'http://www.w3.org/2000/svg\'%3E%3Cg fill=\'none\' fill-rule=\'evenodd\'%3E%3Cg fill=\'%23ffffff\' fill-opacity=\'1\'%3E%3Cpath d=\'M36 34v-4h-2v4h-4v2h4v4h2v-4h4v-2h-4zm0-30V0h-2v4h-4v2h4v4h2V6h4V4h-4zM6 34v-4H4v4H0v2h4v4h2v-4h4v-2H6zM6 4V0H4v4H0v2h4v4h2V6h4V4H6z\'/%3E%3C/g%3E%3C/g%3E%3C/svg%3E');"></div>
+
+        <div class="container mx-auto px-6 relative z-10">
+            <div class="flex flex-col md:flex-row justify-between items-end mb-12 border-b border-slate-700 pb-4">
+                <div>
+                    <span class="text-blue-400 font-mono text-xs uppercase tracking-widest">Evidence-Based Medicine</span>
+                    <h2 class="text-3xl md:text-4xl font-bold mt-2">Data Klinis & Studi Kasus</h2>
+                </div>
+                <div class="text-right hidden md:block">
+                    <p class="text-xs text-slate-400 font-mono">REFERENSI JURNAL INTERNASIONAL</p>
+                </div>
+            </div>
+
+            <div class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-6">
+                
+                <!-- Fact 1 -->
+                <div class="bg-slate-800 p-6 rounded-lg border border-slate-700 hover:border-blue-500 transition duration-300">
+                    <div class="flex justify-between items-start mb-4">
+                        <i data-lucide="scan-face" class="text-blue-400"></i>
+                        <span class="text-[10px] font-mono text-slate-400 border border-slate-600 px-2 py-1 rounded">MRI STUDY</span>
+                    </div>
+                    <h3 class="text-lg font-bold mb-2 text-blue-100">Atrofi Jaringan Otak</h3>
+                    <p class="text-sm text-slate-400 leading-relaxed mb-4">
+                        Pencitraan MRI menunjukkan dehidrasi akut menyebabkan pembesaran ventrikel dan penyusutan jaringan otak, memaksa peningkatan aktivitas neuronal untuk mempertahankan kinerja kognitif yang sama.
+                    </p>
+                    <p class="text-xs text-blue-500 font-mono mt-auto">Kempton et al. (2011), King's College London.</p>
+                </div>
+
+                <!-- Fact 2 -->
+                <div class="bg-slate-800 p-6 rounded-lg border border-slate-700 hover:border-pink-500 transition duration-300">
+                    <div class="flex justify-between items-start mb-4">
+                        <i data-lucide="activity" class="text-pink-400"></i>
+                        <span class="text-[10px] font-mono text-slate-400 border border-slate-600 px-2 py-1 rounded">CLINICAL TRIAL</span>
+                    </div>
+                    <h3 class="text-lg font-bold mb-2 text-pink-100">Ambang Batas 1.36%</h3>
+                    <p class="text-sm text-slate-400 leading-relaxed mb-4">
+                        Studi pada 25 wanita menunjukkan bahwa dehidrasi ringan (penurunan massa tubuh 1.36%) secara signifikan menurunkan konsentrasi dan meningkatkan persepsi kelelahan serta sakit kepala.
+                    </p>
+                    <p class="text-xs text-pink-500 font-mono mt-auto">Armstrong et al. (2012), Univ. of Connecticut.</p>
+                </div>
+
+                <!-- Fact 3 -->
+                <div class="bg-slate-800 p-6 rounded-lg border border-slate-700 hover:border-green-500 transition duration-300">
+                    <div class="flex justify-between items-start mb-4">
+                        <i data-lucide="scale" class="text-green-400"></i>
+                        <span class="text-[10px] font-mono text-slate-400 border border-slate-600 px-2 py-1 rounded">RCT STUDY</span>
+                    </div>
+                    <h3 class="text-lg font-bold mb-2 text-green-100">Termogenesis & Berat Badan</h3>
+                    <p class="text-sm text-slate-400 leading-relaxed mb-4">
+                        Uji klinis acak (RCT) selama 12 minggu menunjukkan subjek yang mengonsumsi 500ml air sebelum makan mengalami penurunan berat badan 44% lebih besar dibanding kelompok kontrol.
+                    </p>
+                    <p class="text-xs text-green-500 font-mono mt-auto">Dennis et al. (2010), Virginia Tech.</p>
+                </div>
+
+                <!-- Fact 4 -->
+                <div class="bg-slate-800 p-6 rounded-lg border border-slate-700 hover:border-orange-500 transition duration-300">
+                    <div class="flex justify-between items-start mb-4">
+                        <i data-lucide="heart-pulse" class="text-orange-400"></i>
+                        <span class="text-[10px] font-mono text-slate-400 border border-slate-600 px-2 py-1 rounded">COHORT STUDY</span>
+                    </div>
+                    <h3 class="text-lg font-bold mb-2 text-orange-100">Viskositas Darah & Jantung</h3>
+                    <p class="text-sm text-slate-400 leading-relaxed mb-4">
+                        Studi epidemiologi menemukan hubungan terbalik antara asupan air dan penyakit jantung koroner fatal. Pria dengan asupan tinggi (>5 gelas) memiliki risiko relatif 0.46 dibandingkan asupan rendah.
+                    </p>
+                    <p class="text-xs text-orange-500 font-mono mt-auto">Adventist Health Study (2002).</p>
+                </div>
+
+            </div>
+        </div>
+    </section>
+
+    <!-- SECTION 2: Pathophysiology (The Bad) -->
+    <section class="py-20 bg-red-50/50 relative">
+        <div class="container mx-auto px-6">
+            <div class="text-center mb-16">
+                <span class="text-red-600 font-mono text-xs uppercase tracking-[0.2em]">Dampak Patologis</span>
+                <h2 class="text-3xl md:text-4xl font-bold text-slate-800 mt-2">Konsekuensi Dehidrasi Sistemik</h2>
+                <p class="text-slate-500 mt-4">Respon tubuh terhadap kegagalan homeostasis cairan.</p>
+            </div>
+
+            <div class="flex flex-wrap justify-center gap-6">
+                <!-- Risk 1 -->
+                <div class="w-full md:w-[45%] lg:w-[30%] bg-white p-6 rounded-xl shadow-sm border-l-4 border-red-500 hover:shadow-md transition">
+                    <div class="flex items-center gap-3 mb-3">
+                        <i data-lucide="frown" class="text-red-500 w-6 h-6"></i>
+                        <h4 class="font-bold text-lg text-slate-800">Hipoperfusi Serebral</h4>
+                    </div>
+                    <p class="text-sm text-slate-600 leading-relaxed">
+                        <span class="font-semibold text-red-500">Gejala: Sakit Kepala.</span> Peningkatan viskositas darah menyebabkan penurunan aliran oksigen ke otak, memicu vasodilatasi kompensatori yang dirasakan sebagai nyeri denyut.
+                    </p>
+                </div>
+
+                <!-- Risk 2 -->
+                <div class="w-full md:w-[45%] lg:w-[30%] bg-white p-6 rounded-xl shadow-sm border-l-4 border-orange-500 hover:shadow-md transition">
+                    <div class="flex items-center gap-3 mb-3">
+                        <i data-lucide="battery-warning" class="text-orange-500 w-6 h-6"></i>
+                        <h4 class="font-bold text-lg text-slate-800">Hipovolemia & Fatigue</h4>
+                    </div>
+                    <p class="text-sm text-slate-600 leading-relaxed">
+                        <span class="font-semibold text-orange-500">Gejala: Cepat Lelah.</span> Penurunan volume plasma darah memaksa jantung bekerja lebih keras (takikardia) untuk mendistribusikan nutrisi, menyebabkan kelelahan sistemik.
+                    </p>
+                </div>
+
+                <!-- Risk 3 -->
+                <div class="w-full md:w-[45%] lg:w-[30%] bg-white p-6 rounded-xl shadow-sm border-l-4 border-yellow-500 hover:shadow-md transition">
+                    <div class="flex items-center gap-3 mb-3">
+                        <i data-lucide="thermometer-sun" class="text-yellow-600 w-6 h-6"></i>
+                        <h4 class="font-bold text-lg text-slate-800">Disregulasi Termal</h4>
+                    </div>
+                    <p class="text-sm text-slate-600 leading-relaxed">
+                        <span class="font-semibold text-yellow-600">Gejala: Suhu Tubuh Naik.</span> Kegagalan mekanisme evaporasi (berkeringat) karena kurangnya cairan tubuh, meningkatkan risiko hipertermia atau heatstroke.
+                    </p>
+                </div>
+
+                <!-- Risk 4 -->
+                <div class="w-full md:w-[45%] lg:w-[30%] bg-white p-6 rounded-xl shadow-sm border-l-4 border-slate-500 hover:shadow-md transition">
+                    <div class="flex items-center gap-3 mb-3">
+                        <i data-lucide="cloud-rain" class="text-slate-500 w-6 h-6"></i>
+                        <h4 class="font-bold text-lg text-slate-800">Disfungsi Neuropsikiatris</h4>
+                    </div>
+                    <p class="text-sm text-slate-600 leading-relaxed">
+                        <span class="font-semibold text-slate-500">Gejala: Cemas & Mood Swing.</span> Gangguan keseimbangan neurotransmitter dan struktur neuron korteks frontal yang memengaruhi regulasi emosi.
+                    </p>
+                </div>
+
+                <!-- Risk 5 -->
+                <div class="w-full md:w-[45%] lg:w-[30%] bg-white p-6 rounded-xl shadow-sm border-l-4 border-purple-500 hover:shadow-md transition">
+                    <div class="flex items-center gap-3 mb-3">
+                        <i data-lucide="alert-triangle" class="text-purple-500 w-6 h-6"></i>
+                        <h4 class="font-bold text-lg text-slate-800">Akumulasi Toksin Renal</h4>
+                    </div>
+                    <p class="text-sm text-slate-600 leading-relaxed">
+                        <span class="font-semibold text-purple-500">Gejala: Masalah Ginjal.</span> Penurunan laju filtrasi glomerulus (GFR) dan peningkatan konsentrasi urin, memicu kristalisasi mineral (batu ginjal).
+                    </p>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- SECTION 3: Behavioral Science Interventions -->
+    <section class="py-24 bg-white relative overflow-hidden">
+        <div class="container mx-auto px-6 relative z-10">
+            <div class="max-w-4xl mx-auto bg-slate-50 rounded-2xl shadow-xl border border-slate-200 overflow-hidden">
+                <div class="bg-slate-800 p-8 text-center border-b border-slate-700">
+                    <h2 class="text-2xl font-bold text-white">Intervensi Perilaku (Behavioral Interventions)</h2>
+                    <p class="text-slate-400 text-sm mt-2">Strategi psikologis untuk meningkatkan kepatuhan asupan cairan.</p>
+                </div>
+                
+                <div class="p-8 md:p-12">
+                    <div class="space-y-8">
+                        <!-- Step 1 -->
+                        <div class="flex flex-col md:flex-row items-start gap-6">
+                            <div class="bg-white border border-slate-200 w-16 h-16 rounded-xl flex items-center justify-center text-3xl shadow-sm shrink-0">👁️</div>
+                            <div>
+                                <h3 class="text-lg font-bold text-slate-800">Visual Cueing (Isyarat Visual)</h3>
+                                <p class="text-sm text-slate-600 leading-relaxed">
+                                    Menempatkan botol air dalam jangkauan pandang visual secara konstan. Otak merespons stimulus visual ("melihat air") dengan memicu rasa haus psikologis dan kebiasaan motorik otomatis.
+                                </p>
+                            </div>
+                        </div>
+
+                        <!-- Step 2 -->
+                        <div class="flex flex-col md:flex-row items-start gap-6">
+                            <div class="bg-white border border-slate-200 w-16 h-16 rounded-xl flex items-center justify-center text-3xl shadow-sm shrink-0">🍋</div>
+                            <div>
+                                <h3 class="text-lg font-bold text-slate-800">Peningkatan Palatabilitas</h3>
+                                <p class="text-sm text-slate-600 leading-relaxed">
+                                    Menambahkan irisan buah (lemon, mentimun) untuk memberikan variasi rasa tanpa kalori berlebih. Rasa yang menyenangkan menstimulasi sistem dopaminergik, memperkuat perilaku minum air.
+                                </p>
+                            </div>
+                        </div>
+
+                        <!-- Step 3 -->
+                        <div class="flex flex-col md:flex-row items-start gap-6">
+                            <div class="bg-white border border-slate-200 w-16 h-16 rounded-xl flex items-center justify-center text-3xl shadow-sm shrink-0">📱</div>
+                            <div>
+                                <h3 class="text-lg font-bold text-slate-800">Digital Prompting</h3>
+                                <p class="text-sm text-slate-600 leading-relaxed">
+                                    Penggunaan notifikasi eksternal (alarm/aplikasi) untuk mengganggu fokus statis dan mengingatkan rehidrasi berkala, mencegah dehidrasi asimtomatik (tanpa gejala haus).
+                                </p>
+                            </div>
+                        </div>
+                    </div>
+
+                    <hr class="my-10 border-slate-200">
+
+                    <div class="text-center">
+                        <h3 class="text-xl font-bold text-slate-800 mb-4">Kesimpulan Klinis</h3>
+                        <p class="text-sm text-slate-600 mb-8 max-w-2xl mx-auto">
+                            Mempertahankan status hidrasi (euhidrasi) adalah strategi preventif primer yang paling efektif dan ekonomis untuk menjaga fungsi sistemik tubuh manusia dari tingkat seluler hingga organ vital.
+                        </p>
+                        <button onclick="window.scrollTo({top: 0, behavior: 'smooth'})" class="inline-block bg-water-700 text-white px-8 py-3 rounded-lg font-semibold text-sm shadow-lg hover:bg-water-900 transition">
+                            Mulai Protokol Rehidrasi
+                        </button>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- FOOTER -->
+    <footer class="bg-slate-900 text-slate-400 py-8 border-t border-slate-800">
+        <div class="container mx-auto px-6 flex flex-col md:flex-row justify-between items-center gap-4">
+            <div class="text-sm">
+                <span class="font-bold text-white">BioHydraLab</span> © 2025
+            </div>
+            <div class="text-xs font-mono text-slate-500 text-center md:text-right">
+                <p>Referensi Data: PubMed, USGS, American Journal of Epidemiology.</p>
+                <p>Konten ini bertujuan untuk edukasi kesehatan masyarakat.</p>
+            </div>
+        </div>
+    </footer>
+
+    <!-- SCRIPTS -->
+    <script>
+        // Initialize Lucide Icons
+        lucide.createIcons();
+
+        // Navbar Effect on Scroll
+        window.addEventListener('scroll', function() {
+            const navbar = document.getElementById('navbar');
+            if (window.scrollY > 50) {
+                navbar.classList.add('py-2');
+                navbar.classList.remove('py-4');
+            } else {
+                navbar.classList.add('py-4');
+                navbar.classList.remove('py-2');
+            }
+        });
+
+        // Water Counter Logic (Scientific)
+        let count = 0;
+        const btn = document.getElementById('counter-btn');
+        const display = document.getElementById('sip-count');
+        const msg = document.getElementById('congrats-msg');
+
+        btn.addEventListener('click', () => {
+            count++;
+            display.innerText = count;
+            
+            // Animation effect
+            btn.classList.add('bg-slate-50');
+            setTimeout(() => btn.classList.remove('bg-slate-50'), 100);
+
+            // Show message
+            msg.style.opacity = '1';
+            if(count === 1) msg.innerText = "INISIASI REHIDRASI: DITERIMA.";
+            if(count === 5) msg.innerText = "STATUS: KADAR AIR OPTIMAL.";
+            if(count === 8) msg.innerText = "TARGET TERCAPAI: HOMEOSTASIS TERJAGA.";
+            
+            // Hide message after 2s
+            setTimeout(() => {
+                msg.style.opacity = '0';
+            }, 3000);
+        });
+    </script>
+</body>
+</html>
